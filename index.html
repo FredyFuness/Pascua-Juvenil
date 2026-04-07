@@ -97,6 +97,36 @@
             overflow: hidden;
             background-color: #f9f9f9;
         }
+
+        /* Barra inferior: Patrocinadores */
+        .footer-patrocinadores {
+            padding: 15px 40px;
+            border-top: 2px solid #eeeeee;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-patrocinadores h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #999999;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .logos-container {
+            display: flex;
+            justify-content: center; /* Centrado para que se vea bien si hay pocos patrocinadores */
+            gap: 50px;
+            flex: 1;
+            align-items: center;
+        }
+
+        .logos-container img {
+            max-height: 70px; /* Tamaño ajustado para que resalte */
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -121,6 +151,14 @@
         <div class="panel-fotos">
             <iframe src="https://padlet.com/embed/ef4fln04dpz0zi25" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%; height:100%; display:block; padding:0; margin:0; border:none;"></iframe>
         </div>
+    </div>
+
+    <div class="footer-patrocinadores">
+        <h3>Patrocinado por:</h3>
+        <div class="logos-container">
+            <img src="WhatsApp Image 2026-04-01 at 2.30.39 PM.jpeg" alt="Patrocinador La Botanita">
+            
+            </div>
     </div>
 
 </body>

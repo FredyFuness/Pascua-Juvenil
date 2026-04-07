@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pascua Juvenil - Proyección en Vivo</title>
+    <style>
+        /* Fondo estrictamente blanco, ideal para proyector */
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Ocupa exactamente toda la pantalla */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Evita que se pueda hacer scroll */
+        }
+
+        /* Cabecera superior */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            border-bottom: 2px solid #eeeeee;
+        }
+
+        .header-logo img {
+            height: 80px; /* Ajusta según el logo de la pascua */
+        }
+
+        .header-text {
+            text-align: right;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 28px;
+        }
+
+        .header-text p {
+            margin: 5px 0 0 0;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        /* Contenido principal (QR a la izquierda, Fotos a la derecha) */
+        .main-content {
+            display: flex;
+            flex: 1; /* Toma todo el espacio restante */
+            padding: 20px 40px;
+            gap: 30px;
+        }
+
+        /* Panel Izquierdo: QR */
+        .panel-qr {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fdfdfd;
+            border: 2px dashed #cccccc;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .panel-qr h2 {
+            color: #d32f2f;
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        .panel-qr p {
+            font-size: 16px;
+            color: #555555;
+        }
+
+        .panel-qr img {
+            width: 220px;
+            height: 220px;
+            margin-top: 15px;
+            border: 1px solid #eeeeee;
+            padding: 10px;
+            background-color: #ffffff;
+        }
+
+        /* Panel Derecho: Muro de fotos (Padlet) */
+        .panel-fotos {
+            flex: 1;
+            border-radius: 15px;
+            border: 1px solid #eeeeee;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+
+        /* Barra inferior: Patrocinadores */
+        .footer-patrocinadores {
+            padding: 15px 40px;
+            border-top: 2px solid #eeeeee;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-patrocinadores h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #999999;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .logos-container {
+            display: flex;
+            justify-content: space-around;
+            flex: 1;
+            align-items: center;
+        }
+
+        .logos-container img {
+            max-height: 50px; /* Logos no muy altos para no robar espacio a las fotos */
+            filter: grayscale(100%);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-logo">
+            <img src="logo-pascua.png" alt="Logo Pascua">
+        </div>
+        <div class="header-text">
+            <h1>Pascua Juvenil 2026</h1>
+            <p>Parroquia La Sagrada Familia</p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="panel-qr">
+            <h2>📸 ¡Sube tu foto!</h2>
+            <p>Escanea este código desde tu celular y tu foto aparecerá aquí en vivo.</p>
+            <img src="qr-padlet.png" alt="QR Padlet">
+        </div>
+
+        <div class="panel-fotos">
+            <iframe src="https://padlet.com/embed/ef4fln04dpz0zi25" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%; height:100%; display:block; padding:0; margin:0; border:none;"></iframe>
+        </div>
+    </div>
+
+    <div class="footer-patrocinadores">
+        <h3>Gracias a:</h3>
+        <div class="logos-container">
+            <img src="patrocinador1.png" alt="Patrocinador 1">
+            <img src="patrocinador2.png" alt="Patrocinador 2">
+            <img src="patrocinador3.png" alt="Patrocinador 3">
+        </div>
+    </div>
+
+</body>
+</html>

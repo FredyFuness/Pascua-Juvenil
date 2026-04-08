@@ -55,7 +55,7 @@
             gap: 30px;
         }
 
-        /* Panel Izquierdo: QR y Botón */
+        /* Panel Izquierdo */
         .panel-qr {
             width: 300px;
             display: flex;
@@ -82,21 +82,49 @@
         }
 
         .panel-qr img {
-            width: 220px;
-            height: 220px;
+            width: 200px;
+            height: 200px;
             margin-top: 10px;
             border: 1px solid #eeeeee;
             padding: 10px;
             background-color: #ffffff;
         }
 
-        /* Botón Acerca de nosotros */
-        .btn-acerca {
-            margin-top: 20px;
-            background-color: #2c3e50;
+        /* NUEVO: Cuenta Regresiva */
+        .contador-caja {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            border-top: 1px solid #eeeeee;
+            border-bottom: 1px solid #eeeeee;
+        }
+        
+        .contador-titulo {
+            font-size: 14px;
+            color: #999999;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .contador-tiempo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        /* Botones */
+        .botones-container {
+            width: 100%;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-acerca, .btn-sorteo {
             color: #ffffff;
             border: none;
-            padding: 12px 20px;
+            padding: 12px;
             border-radius: 8px;
             font-size: 16px;
             font-weight: bold;
@@ -105,11 +133,13 @@
             width: 100%;
         }
 
-        .btn-acerca:hover {
-            background-color: #1a252f;
-        }
+        .btn-acerca { background-color: #2c3e50; }
+        .btn-acerca:hover { background-color: #1a252f; }
 
-        /* Panel Derecho: Muro de fotos en modo presentación */
+        .btn-sorteo { background-color: #d32f2f; }
+        .btn-sorteo:hover { background-color: #b71c1c; }
+
+        /* Panel Derecho: Muro de fotos */
         .panel-fotos {
             flex: 1;
             border-radius: 15px;
@@ -118,10 +148,34 @@
             background-color: #ffffff;
         }
 
+        /* NUEVO: Ticker de Anuncios */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background-color: #ffffff;
+            border-top: 2px solid #eeeeee;
+            padding: 8px 0;
+            box-sizing: border-box;
+        }
+
+        .ticker {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 30s linear infinite;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
         /* Barra inferior: Patrocinadores */
         .footer-patrocinadores {
-            padding: 15px 40px;
-            border-top: 2px solid #eeeeee;
+            padding: 10px 40px 15px 40px;
             display: flex;
             align-items: center;
             gap: 20px;
@@ -146,11 +200,11 @@
         }
 
         .logos-container img {
-            max-height: 70px;
+            max-height: 60px;
             object-fit: contain;
         }
 
-        /* Ventana Emergente (Modal) */
+        /* Ventanas Emergentes (Modales) */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -175,6 +229,10 @@
             text-align: left;
         }
 
+        .modal-content.centro {
+            text-align: center;
+        }
+
         .close-btn {
             position: absolute;
             top: 15px;
@@ -187,9 +245,7 @@
             border: none;
         }
 
-        .close-btn:hover {
-            color: #d32f2f;
-        }
+        .close-btn:hover { color: #d32f2f; }
 
         .modal-content h2 {
             color: #2c3e50;
@@ -198,11 +254,28 @@
             padding-bottom: 10px;
         }
 
-        .modal-content p {
-            color: #555555;
-            font-size: 18px;
-            line-height: 1.6;
+        /* Estilos específicos para el sorteo */
+        .numero-ganador {
+            font-size: 100px;
+            font-weight: 900;
+            color: #d32f2f;
+            margin: 20px 0;
+            letter-spacing: 5px;
         }
+
+        .btn-girar {
+            background-color: #E1A711;
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-girar:hover { background-color: #c9950d; }
 
         .lista-sectores {
             list-style-type: none;
@@ -236,14 +309,28 @@
     <div class="main-content">
         <div class="panel-qr">
             <h2>📸 ¡Sube tu foto!</h2>
-            <p>Escanea y tu foto aparecerá en vivo.</p>
+            <p>Escanea y sal en la pantalla.</p>
             <img src="qr_code.png" alt="QR Padlet">
             
-            <button id="btnAbrirModal" class="btn-acerca">Acerca de nosotros</button>
+            <div class="contador-caja">
+                <div class="contador-titulo">Siguiente actividad en:</div>
+                <div class="contador-tiempo" id="reloj">15:00</div>
+            </div>
+
+            <div class="botones-container">
+                <button id="btnAbrirModal" class="btn-acerca">Acerca de nosotros</button>
+                <button id="btnAbrirSorteo" class="btn-sorteo">🎁 Sorteo Sorpresa</button>
+            </div>
         </div>
 
         <div class="panel-fotos">
             <iframe src="https://padlet.com/embed/ef4fln04dpz0zi25/slideshow" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%; height:100%; display:block; padding:0; margin:0; border:none;"></iframe>
+        </div>
+    </div>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            ¡Bienvenidos a la Pascua Juvenil 2026! 📸 Suban sus fotos y participen. 🙌 Disfruta las dinámicas. 🥤 Mantente hidratado con Electrolit. 🌮 Gracias a La Botanita, Kaprichos y Las Perlitas por su apoyo. ¡Cristo vive!
         </div>
     </div>
 
@@ -265,31 +352,98 @@
             
             <ul class="lista-sectores">
                 <li><strong>Sector Santa Emilia:</strong> Pastoral Juvenil San José</li>
-                <li><strong>Sector [Nombre del sector]:</strong> [Nombre de la Pastoral]</li>
-                <li><strong>Sector [Nombre del sector]:</strong> [Nombre de la Pastoral]</li>
-                <li><strong>Sector [Nombre del sector]:</strong> [Nombre de la Pastoral]</li>
+                <li><strong>Sector [Nombre]:</strong> [Nombre de la Pastoral]</li>
+                <li><strong>Sector [Nombre]:</strong> [Nombre de la Pastoral]</li>
             </ul>
         </div>
     </div>
 
+    <div id="modalSorteo" class="modal-overlay">
+        <div class="modal-content centro">
+            <button id="btnCerrarSorteo" class="close-btn">&times;</button>
+            <h2>🎉 ¡Gran Sorteo Pascua 2026! 🎉</h2>
+            <p>Número de pulsera/gafete ganador:</p>
+            
+            <div class="numero-ganador" id="numeroGanador">000</div>
+            
+            <button id="btnGirar" class="btn-girar">Generar Ganador</button>
+        </div>
+    </div>
+
     <script>
-        var modal = document.getElementById("modalAcercaDe");
-        var btnAbrir = document.getElementById("btnAbrirModal");
-        var btnCerrar = document.getElementById("btnCerrarModal");
+        // --- FUNCIONES DE LOS MODALES ---
+        var modalAcerca = document.getElementById("modalAcercaDe");
+        var btnAbrirAcerca = document.getElementById("btnAbrirModal");
+        var btnCerrarAcerca = document.getElementById("btnCerrarModal");
 
-        btnAbrir.onclick = function() {
-            modal.style.display = "flex";
-        }
+        var modalSorteo = document.getElementById("modalSorteo");
+        var btnAbrirSorteo = document.getElementById("btnAbrirSorteo");
+        var btnCerrarSorteo = document.getElementById("btnCerrarSorteo");
 
-        btnCerrar.onclick = function() {
-            modal.style.display = "none";
-        }
+        // Abrir y cerrar "Acerca de"
+        btnAbrirAcerca.onclick = function() { modalAcerca.style.display = "flex"; }
+        btnCerrarAcerca.onclick = function() { modalAcerca.style.display = "none"; }
 
+        // Abrir y cerrar "Sorteo"
+        btnAbrirSorteo.onclick = function() { modalSorteo.style.display = "flex"; }
+        btnCerrarSorteo.onclick = function() { modalSorteo.style.display = "none"; }
+
+        // Cerrar si hacen clic fuera de la caja blanca
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+            if (event.target == modalAcerca) modalAcerca.style.display = "none";
+            if (event.target == modalSorteo) modalSorteo.style.display = "none";
         }
+
+        // --- FUNCIONALIDAD DEL SORTEO ---
+        var btnGirar = document.getElementById("btnGirar");
+        var numeroDisplay = document.getElementById("numeroGanador");
+        var intervaloRuleta;
+
+        btnGirar.onclick = function() {
+            btnGirar.disabled = true; // Bloquea el botón mientras gira
+            var contadorGiro = 0;
+            
+            // Hace que los números cambien rápido (efecto ruleta)
+            intervaloRuleta = setInterval(function() {
+                var aleatorio = Math.floor(Math.random() * 100) + 1; // Genera de 1 a 100
+                // Añade ceros a la izquierda si es menor a 100 (ej: 005, 042)
+                numeroDisplay.innerText = aleatorio.toString().padStart(3, '0');
+                contadorGiro++;
+
+                // Se detiene después de 30 giros (aprox 3 segundos)
+                if (contadorGiro > 30) {
+                    clearInterval(intervaloRuleta);
+                    btnGirar.disabled = false;
+                    
+                    // Número final ganador
+                    var ganadorFinal = Math.floor(Math.random() * 100) + 1; // <-- Cambia el 100 por el total de jóvenes
+                    numeroDisplay.innerText = ganadorFinal.toString().padStart(3, '0');
+                }
+            }, 100); // Velocidad del giro
+        }
+
+        // --- FUNCIONALIDAD DE LA CUENTA REGRESIVA ---
+        // Configura los segundos totales (15 minutos * 60 = 900 segundos)
+        var tiempoTotal = 900; 
+        var elementoReloj = document.getElementById("reloj");
+
+        var intervaloReloj = setInterval(function() {
+            var minutos = Math.floor(tiempoTotal / 60);
+            var segundos = tiempoTotal % 60;
+
+            // Formatea para que siempre tenga 2 dígitos (ej. 09:05)
+            minutos = minutos < 10 ? "0" + minutos : minutos;
+            segundos = segundos < 10 ? "0" + segundos : segundos;
+
+            elementoReloj.innerText = minutos + ":" + segundos;
+
+            if (tiempoTotal > 0) {
+                tiempoTotal--;
+            } else {
+                elementoReloj.innerText = "¡TIEMPO!";
+                clearInterval(intervaloReloj);
+            }
+        }, 1000);
     </script>
 
 </body>

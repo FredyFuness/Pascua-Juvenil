@@ -62,7 +62,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: #ffffff; /* Fondo blanco */
+            background-color: #ffffff;
             border: 2px dashed #cccccc;
             border-radius: 15px;
             padding: 20px;
@@ -109,13 +109,13 @@
             background-color: #1a252f;
         }
 
-        /* Panel Derecho: Muro de fotos */
+        /* Panel Derecho: Muro de fotos en modo presentación */
         .panel-fotos {
             flex: 1;
             border-radius: 15px;
             border: 1px solid #eeeeee;
             overflow: hidden;
-            background-color: #ffffff; /* Fondo blanco */
+            background-color: #ffffff;
         }
 
         /* Barra inferior: Patrocinadores */
@@ -125,7 +125,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            background-color: #ffffff; /* Fondo blanco */
+            background-color: #ffffff;
         }
 
         .footer-patrocinadores h3 {
@@ -150,24 +150,22 @@
             object-fit: contain;
         }
 
-        /* ----------------------------------- */
-        /* Estilos de la Ventana Emergente     */
-        /* ----------------------------------- */
+        /* Ventana Emergente (Modal) */
         .modal-overlay {
-            display: none; /* Oculto por defecto */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.75); /* Fondo oscuro semitransparente para resaltar */
+            background-color: rgba(0, 0, 0, 0.75);
             z-index: 1000;
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
-            background-color: #ffffff; /* Fondo estrictamente blanco para el contenido */
+            background-color: #ffffff;
             padding: 40px;
             border-radius: 15px;
             max-width: 700px;
@@ -245,7 +243,7 @@
         </div>
 
         <div class="panel-fotos">
-            <iframe src="https://padlet.com/embed/ef4fln04dpz0zi25" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%; height:100%; display:block; padding:0; margin:0; border:none;"></iframe>
+            <iframe src="https://padlet.com/embed/ef4fln04dpz0zi25/slideshow" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%; height:100%; display:block; padding:0; margin:0; border:none;"></iframe>
         </div>
     </div>
 
@@ -275,22 +273,18 @@
     </div>
 
     <script>
-        // Obtener los elementos
         var modal = document.getElementById("modalAcercaDe");
         var btnAbrir = document.getElementById("btnAbrirModal");
         var btnCerrar = document.getElementById("btnCerrarModal");
 
-        // Al hacer clic en el botón, mostrar la ventana
         btnAbrir.onclick = function() {
             modal.style.display = "flex";
         }
 
-        // Al hacer clic en la "X", ocultar la ventana
         btnCerrar.onclick = function() {
             modal.style.display = "none";
         }
 
-        // Si el usuario hace clic fuera de la caja blanca, también se cierra
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";

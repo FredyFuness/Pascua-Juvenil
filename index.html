@@ -117,14 +117,15 @@
 
         .logos-container {
             display: flex;
-            justify-content: center; /* Centrado para que se vea bien si hay pocos patrocinadores */
+            justify-content: center;
             gap: 50px;
             flex: 1;
             align-items: center;
+            flex-wrap: wrap; /* Asegura que los logos no se desborden */
         }
 
         .logos-container img {
-            max-height: 70px; /* Tamaño ajustado para que resalte */
+            max-height: 70px;
             object-fit: contain;
         }
     </style>
@@ -156,9 +157,11 @@
     <div class="footer-patrocinadores">
         <h3>Patrocinado por:</h3>
         <div class="logos-container">
-            <img src="WhatsApp Image 2026-04-01 at 2.30.39 PM.jpeg" alt="Patrocinador La Botanita">
-            
-            </div>
+            <img src="WhatsApp Image 2026-04-01 at 2.30.39 PM.jpeg" alt="La Botanita">
+            <img src="patrocinador2.PNG" alt="Electrolit">
+            <img src="patrocinador3.jpeg" alt="Kaprichos">
+            <img src="patrocinador4.png" alt="Las Perlitas">
+        </div>
     </div>
 
 </body>

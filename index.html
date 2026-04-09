@@ -53,6 +53,7 @@
             flex: 1;
             padding: 20px 40px;
             gap: 30px;
+            min-height: 0; /* Evita que el Padlet desborde el espacio */
         }
 
         /* Panel Izquierdo */
@@ -121,13 +122,20 @@
             background-color: #ffffff;
         }
 
+        /* ========================================= */
+        /* ÁREA INFERIOR UNIFICADA (TICKER + LOGOS)  */
+        /* ========================================= */
+        .footer-area {
+            flex-shrink: 0; /* MAGIA: Evita que el Padlet aplaste esta zona */
+            background-color: #ffffff;
+            border-top: 2px solid #eeeeee;
+        }
+
         /* Ticker de Anuncios */
         .ticker-wrap {
             width: 100%;
             overflow: hidden;
-            background-color: #ffffff;
-            border-top: 2px solid #eeeeee;
-            padding: 8px 0;
+            padding: 12px 0 5px 0;
             box-sizing: border-box;
         }
 
@@ -148,11 +156,10 @@
 
         /* Barra inferior: Patrocinadores */
         .footer-patrocinadores {
-            padding: 10px 40px 15px 40px;
+            padding: 5px 40px 15px 40px;
             display: flex;
             align-items: center;
             gap: 20px;
-            background-color: #ffffff;
         }
 
         .footer-patrocinadores h3 {
@@ -275,19 +282,21 @@
         </div>
     </div>
 
-    <div class="ticker-wrap">
-        <div class="ticker">
-            ¡Bienvenidos a la Pascua Juvenil 2026! 📸 Suban sus fotos y participen. 🙌 Disfruta las dinámicas. 🥤 Mantente hidratado con Electrolit. 🌮 Gracias a La Botanita, Kaprichos y Las Perlitas por su apoyo. ¡Cristo vive!
+    <div class="footer-area">
+        <div class="ticker-wrap">
+            <div class="ticker">
+                ¡Bienvenidos a la Pascua Juvenil 2026! 📸 Suban sus fotos y participen. 🙌 Disfruta las dinámicas. 🥤 Mantente hidratado con Electrolit. 🌮 Gracias a La Botanita, Kaprichos y Las Perlitas por su apoyo. ¡Cristo vive!
+            </div>
         </div>
-    </div>
 
-    <div class="footer-patrocinadores">
-        <h3>Patrocinado por:</h3>
-        <div class="logos-container">
-            <img src="WhatsApp Image 2026-04-01 at 2.30.39 PM.jpeg" alt="La Botanita">
-            <img src="patrocinador2.PNG" alt="Electrolit">
-            <img src="patrocinador3.jpeg" alt="Kaprichos">
-            <img src="patrocinador4.png" alt="Las Perlitas">
+        <div class="footer-patrocinadores">
+            <h3>Patrocinado por:</h3>
+            <div class="logos-container">
+                <img src="WhatsApp Image 2026-04-01 at 2.30.39 PM.jpeg" alt="La Botanita">
+                <img src="patrocinador2.PNG" alt="Electrolit">
+                <img src="patrocinador3.jpeg" alt="Kaprichos">
+                <img src="patrocinador4.png" alt="Las Perlitas">
+            </div>
         </div>
     </div>
 

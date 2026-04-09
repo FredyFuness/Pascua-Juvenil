@@ -135,7 +135,7 @@
         .ticker-wrap {
             width: 100%;
             overflow: hidden;
-            padding: 12px 0 5px 0;
+            padding: 10px 0; /* Un poco más de aire */
             box-sizing: border-box;
         }
 
@@ -143,10 +143,20 @@
             display: inline-block;
             white-space: nowrap;
             padding-left: 100%;
-            animation: ticker 30s linear infinite;
-            font-size: 18px;
+            /* Aumenté un poco el tiempo (40s) para compensar los logos */
+            animation: ticker 40s linear infinite; 
+            font-size: 20px; /* Un poco más grande el texto */
             font-weight: bold;
             color: #d32f2f;
+            vertical-align: middle; /* Alineación vertical */
+        }
+
+        /* Estilo para los logos DENTRO del Ticker */
+        .ticker-logo {
+            height: 40px; /* Tamaño ajustado para que no se vea gigante */
+            width: auto;
+            vertical-align: middle; /* Alineación con el texto */
+            margin: 0 20px; /* Espacio a los lados */
         }
 
         @keyframes ticker {
@@ -285,7 +295,10 @@
     <div class="footer-area">
         <div class="ticker-wrap">
             <div class="ticker">
-                ¡Bienvenidos a la Pascua Juvenil 2026! 📸 Suban sus fotos y participen. 🙌 Disfruta las dinámicas. 🥤 Mantente hidratado con Electrolit. 🌮 Gracias a La Botanita, Kaprichos y Las Perlitas por su apoyo. ¡Cristo vive!
+                <img src="logo-pascua.PNG" alt="Pascua" class="ticker-logo">
+                ¡Bienvenidos a la Pascua Juvenil 2026! 📸 Suban sus fotos y participen. 🙌 Disfruta las dinámicas. 🥤 Mantente hidratado con Electrolit. 
+                <img src="logo-pascua.PNG" alt="Pascua" class="ticker-logo">
+                🌮 Gracias a La Botanita, Kaprichos y Las Perlitas por su apoyo. ¡Cristo vive!
             </div>
         </div>
 

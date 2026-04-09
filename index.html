@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pascua Juvenil - Proyección en Vivo</title>
     <style>
-        /* Fondo estrictamente blanco, ideal para proyector */
+        /* ========================================= */
+        /* ESTILOS GLOBALES (Para el Proyector)      */
+        /* ========================================= */
         body {
             background-color: #ffffff;
             color: #333333;
@@ -15,7 +17,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow: hidden; /* Sin scroll en PC */
         }
 
         /* Cabecera superior */
@@ -53,7 +55,7 @@
             flex: 1;
             padding: 20px 40px;
             gap: 30px;
-            min-height: 0; /* Evita que el Padlet desborde el espacio */
+            min-height: 0;
         }
 
         /* Panel Izquierdo */
@@ -68,6 +70,7 @@
             border-radius: 15px;
             padding: 20px;
             text-align: center;
+            box-sizing: border-box;
         }
 
         .panel-qr h2 {
@@ -122,11 +125,9 @@
             background-color: #ffffff;
         }
 
-        /* ========================================= */
-        /* ÁREA INFERIOR UNIFICADA (TICKER + LOGOS)  */
-        /* ========================================= */
+        /* ÁREA INFERIOR UNIFICADA */
         .footer-area {
-            flex-shrink: 0; /* MAGIA: Evita que el Padlet aplaste esta zona */
+            flex-shrink: 0;
             background-color: #ffffff;
             border-top: 2px solid #eeeeee;
         }
@@ -135,7 +136,7 @@
         .ticker-wrap {
             width: 100%;
             overflow: hidden;
-            padding: 5px 0; /* Un poco más de aire, pero compacto */
+            padding: 5px 0;
             box-sizing: border-box;
         }
 
@@ -143,20 +144,18 @@
             display: inline-block;
             white-space: nowrap;
             padding-left: 100%;
-            /* Aumenté un poco el tiempo (40s) para compensar los logos y el texto */
             animation: ticker 40s linear infinite; 
-            font-size: 18px; /* Un poco más compacto */
+            font-size: 18px;
             font-weight: bold;
             color: #d32f2f;
-            vertical-align: middle; /* Alineación vertical */
+            vertical-align: middle;
         }
 
-        /* Estilo para los logos DENTRO del Ticker */
         .ticker-logo {
-            height: 30px; /* Tamaño ajustado para que no se vea gigante */
+            height: 30px;
             width: auto;
-            vertical-align: middle; /* Alineación con el texto */
-            margin: 0 15px; /* Espacio a los lados */
+            vertical-align: middle;
+            margin: 0 15px;
         }
 
         @keyframes ticker {
@@ -166,7 +165,7 @@
 
         /* Barra inferior: Patrocinadores */
         .footer-patrocinadores {
-            padding: 2px 40px 10px 40px; /* Compactando el espacio superior */
+            padding: 2px 40px 10px 40px;
             display: flex;
             align-items: center;
             gap: 20px;
@@ -174,7 +173,7 @@
 
         .footer-patrocinadores h3 {
             margin: 0;
-            font-size: 14px; /* Un poco más pequeño el título */
+            font-size: 14px;
             color: #999999;
             text-transform: uppercase;
             white-space: nowrap;
@@ -183,14 +182,14 @@
         .logos-container {
             display: flex;
             justify-content: center;
-            gap: 40px; /* Reduciendo el espacio entre logos */
+            gap: 40px;
             flex: 1;
             align-items: center;
             flex-wrap: wrap;
         }
 
         .logos-container img {
-            max-height: 45px; /* Logos más pequeños para ahorrar espacio vertical */
+            max-height: 45px;
             object-fit: contain;
         }
 
@@ -240,7 +239,6 @@
             padding-bottom: 10px;
         }
 
-        /* Estilos específicos para el sorteo */
         .numero-ganador {
             font-size: 100px;
             font-weight: 900;
@@ -262,6 +260,55 @@
         }
 
         .btn-girar:hover { background-color: #c9950d; }
+
+        /* ========================================= */
+        /* DISEÑO RESPONSIVO (Para Celulares)        */
+        /* ========================================= */
+        @media (max-width: 800px) {
+            body {
+                height: auto;
+                overflow: auto; /* Permite hacer scroll en celular */
+            }
+
+            .header {
+                flex-direction: column;
+                padding: 15px 20px;
+                text-align: center;
+            }
+
+            .header-text {
+                text-align: center;
+                margin-top: 15px;
+            }
+
+            .main-content {
+                flex-direction: column; /* Pone el QR arriba y el muro abajo */
+                padding: 15px 20px;
+                gap: 20px;
+            }
+
+            .panel-qr {
+                width: 100%; /* El panel del QR usa todo el ancho del celular */
+            }
+
+            .panel-fotos {
+                min-height: 500px; /* Asegura que el muro de Padlet tenga un buen tamaño */
+            }
+
+            .footer-patrocinadores {
+                flex-direction: column; /* Pone el título arriba de los logos */
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .logos-container {
+                gap: 20px; /* Reduce el espacio entre logos en celular */
+            }
+
+            .numero-ganador {
+                font-size: 70px; /* Hace el número más pequeño para que quepa */
+            }
+        }
     </style>
 </head>
 <body>

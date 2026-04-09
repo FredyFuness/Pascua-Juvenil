@@ -78,65 +78,38 @@
         .panel-qr p {
             font-size: 16px;
             color: #555555;
-            margin-bottom: 5px;
+            margin-bottom: 15px;
         }
 
         .panel-qr img {
             width: 200px;
             height: 200px;
-            margin-top: 10px;
             border: 1px solid #eeeeee;
             padding: 10px;
             background-color: #ffffff;
         }
 
-        /* Cuenta Regresiva */
-        .contador-caja {
-            margin-top: 15px;
-            padding: 10px;
-            width: 100%;
-            border-top: 1px solid #eeeeee;
-            border-bottom: 1px solid #eeeeee;
-        }
-        
-        .contador-titulo {
-            font-size: 14px;
-            color: #999999;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .contador-tiempo {
-            font-size: 32px;
-            font-weight: bold;
-            color: #d32f2f;
-        }
-
-        /* Botones */
+        /* Botón Sorteo */
         .botones-container {
             width: 100%;
-            margin-top: 15px;
+            margin-top: 25px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
         }
 
-        .btn-acerca, .btn-sorteo {
+        .btn-sorteo {
+            background-color: #d32f2f;
             color: #ffffff;
             border: none;
-            padding: 12px;
+            padding: 15px;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s;
             width: 100%;
         }
 
-        .btn-acerca { background-color: #2c3e50; }
-        .btn-acerca:hover { background-color: #1a252f; }
-
-        .btn-sorteo { background-color: #d32f2f; }
         .btn-sorteo:hover { background-color: #b71c1c; }
 
         /* Panel Derecho: Muro de fotos */
@@ -204,7 +177,7 @@
             object-fit: contain;
         }
 
-        /* Ventanas Emergentes (Modales) */
+        /* Ventana Emergente (Modal) */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -222,14 +195,10 @@
             background-color: #ffffff;
             padding: 40px;
             border-radius: 15px;
-            max-width: 700px;
+            max-width: 600px;
             width: 90%;
             position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            text-align: left;
-        }
-
-        .modal-content.centro {
             text-align: center;
         }
 
@@ -276,22 +245,6 @@
         }
 
         .btn-girar:hover { background-color: #c9950d; }
-
-        .lista-sectores {
-            list-style-type: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-
-        .lista-sectores li {
-            font-size: 18px;
-            color: #333333;
-            margin-bottom: 15px;
-            padding: 10px;
-            background-color: #fcfcfc;
-            border-left: 4px solid #d32f2f;
-            border-radius: 4px;
-        }
     </style>
 </head>
 <body>
@@ -312,13 +265,7 @@
             <p>Escanea y sal en la pantalla.</p>
             <img src="qr_code.png" alt="QR Padlet">
             
-            <div class="contador-caja">
-                <div class="contador-titulo">Siguiente actividad en:</div>
-                <div class="contador-tiempo" id="reloj">15:00</div>
-            </div>
-
             <div class="botones-container">
-                <button id="btnAbrirModal" class="btn-acerca">Acerca de nosotros</button>
                 <button id="btnAbrirSorteo" class="btn-sorteo">🎁 Sorteo Sorpresa</button>
             </div>
         </div>
@@ -344,22 +291,8 @@
         </div>
     </div>
 
-    <div id="modalAcercaDe" class="modal-overlay">
-        <div class="modal-content">
-            <button id="btnCerrarModal" class="close-btn">&times;</button>
-            <h2>Parroquia La Sagrada Familia</h2>
-            <p>Nuestra comunidad trabaja unida para guiar a los jóvenes. Estamos organizados en distintos sectores, cada uno liderado por su propia Pastoral Juvenil:</p>
-            
-            <ul class="lista-sectores">
-                <li><strong>Sector Santa Emilia:</strong> Pastoral Juvenil San José</li>
-                <li><strong>Sector [Nombre]:</strong> [Nombre de la Pastoral]</li>
-                <li><strong>Sector [Nombre]:</strong> [Nombre de la Pastoral]</li>
-            </ul>
-        </div>
-    </div>
-
     <div id="modalSorteo" class="modal-overlay">
-        <div class="modal-content centro">
+        <div class="modal-content">
             <button id="btnCerrarSorteo" class="close-btn">&times;</button>
             <h2>🎉 ¡Gran Sorteo Pascua 2026! 🎉</h2>
             <p>Número de pulsera/gafete ganador:</p>
@@ -371,18 +304,9 @@
     </div>
 
     <script>
-        // --- FUNCIONES DE LOS MODALES ---
-        var modalAcerca = document.getElementById("modalAcercaDe");
-        var btnAbrirAcerca = document.getElementById("btnAbrirModal");
-        var btnCerrarAcerca = document.getElementById("btnCerrarModal");
-
         var modalSorteo = document.getElementById("modalSorteo");
         var btnAbrirSorteo = document.getElementById("btnAbrirSorteo");
         var btnCerrarSorteo = document.getElementById("btnCerrarSorteo");
-
-        // Abrir y cerrar "Acerca de"
-        btnAbrirAcerca.onclick = function() { modalAcerca.style.display = "flex"; }
-        btnCerrarAcerca.onclick = function() { modalAcerca.style.display = "none"; }
 
         // Abrir y cerrar "Sorteo"
         btnAbrirSorteo.onclick = function() { modalSorteo.style.display = "flex"; }
@@ -390,7 +314,6 @@
 
         // Cerrar si hacen clic fuera de la caja blanca
         window.onclick = function(event) {
-            if (event.target == modalAcerca) modalAcerca.style.display = "none";
             if (event.target == modalSorteo) modalSorteo.style.display = "none";
         }
 
@@ -421,29 +344,6 @@
                 }
             }, 100); // Velocidad del giro
         }
-
-        // --- FUNCIONALIDAD DE LA CUENTA REGRESIVA ---
-        // Configura los segundos totales (15 minutos * 60 = 900 segundos)
-        var tiempoTotal = 900; 
-        var elementoReloj = document.getElementById("reloj");
-
-        var intervaloReloj = setInterval(function() {
-            var minutos = Math.floor(tiempoTotal / 60);
-            var segundos = tiempoTotal % 60;
-
-            // Formatea para que siempre tenga 2 dígitos (ej. 09:05)
-            minutos = minutos < 10 ? "0" + minutos : minutos;
-            segundos = segundos < 10 ? "0" + segundos : segundos;
-
-            elementoReloj.innerText = minutos + ":" + segundos;
-
-            if (tiempoTotal > 0) {
-                tiempoTotal--;
-            } else {
-                elementoReloj.innerText = "¡TIEMPO!";
-                clearInterval(intervaloReloj);
-            }
-        }, 1000);
     </script>
 
 </body>

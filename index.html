@@ -58,9 +58,9 @@
             min-height: 0;
         }
 
-        /* Panel Izquierdo */
+        /* Panel Izquierdo (Agrandado para el QR) */
         .panel-qr {
-            width: 300px;
+            width: 360px; /* Panel más ancho */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -75,46 +75,24 @@
 
         .panel-qr h2 {
             color: #d32f2f;
-            font-size: 24px;
+            font-size: 28px; /* Texto más grande */
             margin-top: 0;
+            margin-bottom: 10px;
         }
 
         .panel-qr p {
-            font-size: 16px;
+            font-size: 18px;
             color: #555555;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .panel-qr img {
-            width: 200px;
-            height: 200px;
+            width: 280px; /* QR mucho más grande */
+            height: 280px;
             border: 1px solid #eeeeee;
-            padding: 10px;
+            padding: 15px;
             background-color: #ffffff;
         }
-
-        /* Botón Sorteo */
-        .botones-container {
-            width: 100%;
-            margin-top: 25px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .btn-sorteo {
-            background-color: #d32f2f;
-            color: #ffffff;
-            border: none;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-
-        .btn-sorteo:hover { background-color: #b71c1c; }
 
         /* Panel Derecho: Muro de fotos */
         .panel-fotos {
@@ -136,7 +114,7 @@
         .ticker-wrap {
             width: 100%;
             overflow: hidden;
-            padding: 5px 0;
+            padding: 8px 0;
             box-sizing: border-box;
         }
 
@@ -165,7 +143,7 @@
 
         /* Barra inferior: Patrocinadores */
         .footer-patrocinadores {
-            padding: 2px 40px 10px 40px;
+            padding: 5px 40px 15px 40px;
             display: flex;
             align-items: center;
             gap: 20px;
@@ -182,84 +160,16 @@
         .logos-container {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 25px; /* Espacio reducido para que quepan los 7 logos */
             flex: 1;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Si la pantalla es pequeña, bajan a otra línea */
         }
 
         .logos-container img {
-            max-height: 45px;
+            max-height: 40px; /* Logos ajustados para mantener la armonía */
             object-fit: contain;
         }
-
-        /* Ventana Emergente (Modal) */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.75);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            color: #999999;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        .close-btn:hover { color: #d32f2f; }
-
-        .modal-content h2 {
-            color: #2c3e50;
-            margin-top: 0;
-            border-bottom: 2px solid #eeeeee;
-            padding-bottom: 10px;
-        }
-
-        .numero-ganador {
-            font-size: 100px;
-            font-weight: 900;
-            color: #d32f2f;
-            margin: 20px 0;
-            letter-spacing: 5px;
-        }
-
-        .btn-girar {
-            background-color: #E1A711;
-            color: #ffffff;
-            border: none;
-            padding: 15px 30px;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .btn-girar:hover { background-color: #c9950d; }
 
         /* ========================================= */
         /* DISEÑO RESPONSIVO (Para Celulares)        */
@@ -302,11 +212,7 @@
             }
 
             .logos-container {
-                gap: 20px; /* Reduce el espacio entre logos en celular */
-            }
-
-            .numero-ganador {
-                font-size: 70px; /* Hace el número más pequeño para que quepa */
+                gap: 15px;
             }
         }
     </style>
@@ -328,10 +234,6 @@
             <h2>📸 ¡Sube tu foto!</h2>
             <p>Escanea y sal en la pantalla.</p>
             <img src="qr_code.png" alt="QR Padlet">
-            
-            <div class="botones-container">
-                <button id="btnAbrirSorteo" class="btn-sorteo">🎁 Sorteo Sorpresa</button>
-            </div>
         </div>
 
         <div class="panel-fotos">
@@ -345,7 +247,7 @@
                 <img src="logo-pascua.PNG" alt="Pascua" class="ticker-logo">
                 ¡Bienvenidos a la Pascua Juvenil 2026! 📸 Suban sus fotos y participen. 🙌 Disfruta las dinámicas. 🥤 Mantente hidratado con Electrolit. 
                 <img src="logo-pascua.PNG" alt="Pascua" class="ticker-logo">
-                🌮 Gracias a La Botanita, Kaprichos y Las Perlitas por su apoyo. ¡Cristo vive!
+                🌮 Gracias a La Botanita, Kaprichos, Las Perlitas y todos nuestros patrocinadores por su apoyo. ¡Cristo vive!
             </div>
         </div>
 
@@ -356,64 +258,12 @@
                 <img src="patrocinador2.PNG" alt="Electrolit">
                 <img src="patrocinador3.jpeg" alt="Kaprichos">
                 <img src="patrocinador4.png" alt="Las Perlitas">
+                <img src="patrocinador5.jpeg" alt="Patrocinador 5">
+                <img src="patrocinador6.jpeg" alt="Patrocinador 6">
+                <img src="patrocinador7.jpeg" alt="Patrocinador 7">
             </div>
         </div>
     </div>
-
-    <div id="modalSorteo" class="modal-overlay">
-        <div class="modal-content">
-            <button id="btnCerrarSorteo" class="close-btn">&times;</button>
-            <h2>🎉 ¡Gran Sorteo Pascua 2026! 🎉</h2>
-            <p>Número de pulsera/gafete ganador:</p>
-            
-            <div class="numero-ganador" id="numeroGanador">000</div>
-            
-            <button id="btnGirar" class="btn-girar">Generar Ganador</button>
-        </div>
-    </div>
-
-    <script>
-        var modalSorteo = document.getElementById("modalSorteo");
-        var btnAbrirSorteo = document.getElementById("btnAbrirSorteo");
-        var btnCerrarSorteo = document.getElementById("btnCerrarSorteo");
-
-        // Abrir y cerrar "Sorteo"
-        btnAbrirSorteo.onclick = function() { modalSorteo.style.display = "flex"; }
-        btnCerrarSorteo.onclick = function() { modalSorteo.style.display = "none"; }
-
-        // Cerrar si hacen clic fuera de la caja blanca
-        window.onclick = function(event) {
-            if (event.target == modalSorteo) modalSorteo.style.display = "none";
-        }
-
-        // --- FUNCIONALIDAD DEL SORTEO ---
-        var btnGirar = document.getElementById("btnGirar");
-        var numeroDisplay = document.getElementById("numeroGanador");
-        var intervaloRuleta;
-
-        btnGirar.onclick = function() {
-            btnGirar.disabled = true; // Bloquea el botón mientras gira
-            var contadorGiro = 0;
-            
-            // Hace que los números cambien rápido (efecto ruleta)
-            intervaloRuleta = setInterval(function() {
-                var aleatorio = Math.floor(Math.random() * 100) + 1; // Genera de 1 a 100
-                // Añade ceros a la izquierda si es menor a 100 (ej: 005, 042)
-                numeroDisplay.innerText = aleatorio.toString().padStart(3, '0');
-                contadorGiro++;
-
-                // Se detiene después de 30 giros (aprox 3 segundos)
-                if (contadorGiro > 30) {
-                    clearInterval(intervaloRuleta);
-                    btnGirar.disabled = false;
-                    
-                    // Número final ganador
-                    var ganadorFinal = Math.floor(Math.random() * 100) + 1; // <-- Cambia el 100 por el total de jóvenes
-                    numeroDisplay.innerText = ganadorFinal.toString().padStart(3, '0');
-                }
-            }, 100); // Velocidad del giro
-        }
-    </script>
 
 </body>
 </html>

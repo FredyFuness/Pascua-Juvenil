@@ -58,7 +58,7 @@
             min-height: 0;
         }
 
-        /* Panel Izquierdo (Agrandado para el QR) */
+        /* Panel Izquierdo (Agrandado para el QR, sin botones) */
         .panel-qr {
             width: 360px; /* Panel más ancho */
             display: flex;
@@ -103,72 +103,79 @@
             background-color: #ffffff;
         }
 
-        /* ÁREA INFERIOR UNIFICADA */
+        /* ÁREA INFERIOR UNIFICADA CON DOS TICKERS */
         .footer-area {
             flex-shrink: 0;
             background-color: #ffffff;
             border-top: 2px solid #eeeeee;
+            display: flex;
+            flex-direction: column;
+            gap: 0; /* Sin espacio entre tickers */
         }
 
-        /* Ticker de Anuncios */
+        /* Estilos comunes para los Tickers */
         .ticker-wrap {
             width: 100%;
             overflow: hidden;
-            padding: 8px 0;
             box-sizing: border-box;
         }
 
-        .ticker {
+        .ticker-content {
             display: inline-block;
             white-space: nowrap;
             padding-left: 100%;
-            animation: ticker 40s linear infinite; 
-            font-size: 18px;
-            font-weight: bold;
-            color: #d32f2f;
             vertical-align: middle;
         }
 
-        .ticker-logo {
+        /* NUEVO: Ticker de logotipos de patrocinadores */
+        .footer-patrocinadores-ticker {
+            padding: 10px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .patrocinadores-titulo {
+            text-align: center;
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #999999;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .ticker-sponsors {
+            animation: ticker-move 50s linear infinite; /* Slower for logos */
+        }
+
+        .sponsor-logo {
+            max-height: 80px; /* Logos mucho más grandes (duplicados) */
+            width: auto;
+            vertical-align: middle;
+            margin: 0 35px; /* Espacio entre logos */
+            object-fit: contain;
+        }
+
+        /* Ticker de Anuncios de texto */
+        .ticker-anuncios {
+            padding: 8px 0;
+        }
+
+        .ticker-text {
+            animation: ticker-move 40s linear infinite; 
+            font-size: 18px;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        .ticker-logo-pascua {
             height: 30px;
             width: auto;
             vertical-align: middle;
             margin: 0 15px;
         }
 
-        @keyframes ticker {
+        @keyframes ticker-move {
             0% { transform: translate(0, 0); }
             100% { transform: translate(-100%, 0); }
-        }
-
-        /* Barra inferior: Patrocinadores */
-        .footer-patrocinadores {
-            padding: 5px 40px 15px 40px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .footer-patrocinadores h3 {
-            margin: 0;
-            font-size: 14px;
-            color: #999999;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        .logos-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px; /* Espacio reducido para que quepan los 7 logos */
-            flex: 1;
-            align-items: center;
-            flex-wrap: wrap; /* Si la pantalla es pequeña, bajan a otra línea */
-        }
-
-        .logos-container img {
-            max-height: 40px; /* Logos ajustados para mantener la armonía */
-            object-fit: contain;
         }
 
         /* ========================================= */
@@ -205,14 +212,13 @@
                 min-height: 500px; /* Asegura que el muro de Padlet tenga un buen tamaño */
             }
 
-            .footer-patrocinadores {
-                flex-direction: column; /* Pone el título arriba de los logos */
-                padding: 15px 20px;
-                gap: 15px;
+            /* Los tickers en celular se ven uno sobre otro */
+            .ticker-wrap {
+                padding: 10px 0;
             }
-
-            .logos-container {
-                gap: 15px;
+            .sponsor-logo {
+                max-height: 50px; /* logos más pequeños para phone view */
+                margin: 0 15px;
             }
         }
     </style>
@@ -242,27 +248,30 @@
     </div>
 
     <div class="footer-area">
-        <div class="ticker-wrap">
-            <div class="ticker">
-                <img src="logo-pascua.PNG" alt="Pascua" class="ticker-logo">
-                ¡Bienvenidos a la Pascua Juvenil 2026! 📸 Suban sus fotos y participen. 🙌 Disfruta las dinámicas. 🥤 Mantente hidratado con Electrolit. 
-                <img src="logo-pascua.PNG" alt="Pascua" class="ticker-logo">
-                🌮 Gracias a La Botanita, Kaprichos, Las Perlitas y todos nuestros patrocinadores por su apoyo. ¡Cristo vive!
+        
+        <div class="ticker-wrap footer-patrocinadores-ticker">
+            <div class="patrocinadores-titulo">Patrocinado por:</div>
+            <div class="ticker-content ticker-sponsors">
+                <img src="WhatsApp Image 2026-04-01 at 2.30.39 PM.jpeg" alt="La Botanita" class="sponsor-logo">
+                <img src="patrocinador2.PNG" alt="Electrolit" class="sponsor-logo">
+                <img src="patrocinador3.jpeg" alt="Kaprichos" class="sponsor-logo">
+                <img src="patrocinador4.png" alt="Las Perlitas" class="sponsor-logo">
+                <img src="patrocinador5.jpeg" alt="Patrocinador 5" class="sponsor-logo">
+                <img src="patrocinador6.jpeg" alt="Patrocinador 6" class="sponsor-logo">
+                <img src="patrocinador7.jpeg" alt="Patrocinador 7" class="sponsor-logo">
+                <img src="patrocinador8.jpeg" alt="Patrocinador 8" class="sponsor-logo">
             </div>
         </div>
 
-        <div class="footer-patrocinadores">
-            <h3>Patrocinado por:</h3>
-            <div class="logos-container">
-                <img src="WhatsApp Image 2026-04-01 at 2.30.39 PM.jpeg" alt="La Botanita">
-                <img src="patrocinador2.PNG" alt="Electrolit">
-                <img src="patrocinador3.jpeg" alt="Kaprichos">
-                <img src="patrocinador4.png" alt="Las Perlitas">
-                <img src="patrocinador5.jpeg" alt="Patrocinador 5">
-                <img src="patrocinador6.jpeg" alt="Patrocinador 6">
-                <img src="patrocinador7.jpeg" alt="Patrocinador 7">
+        <div class="ticker-wrap ticker-anuncios">
+            <div class="ticker-content ticker-text">
+                <img src="logo-pascua.PNG" alt="Pascua" class="ticker-logo-pascua">
+                ¡Bienvenidos a la Pascua Juvenil 2026! 📸 Suban sus fotos y participen. 🙌 Disfruta las dinámicas. 🥤 Mantente hidratado con Electrolit. 
+                <img src="logo-pascua.PNG" alt="Pascua" class="ticker-logo-pascua">
+                🌮 Gracias a todos nuestros patrocinadores por su apoyo. ¡Cristo vive!
             </div>
         </div>
+
     </div>
 
 </body>
